@@ -1,0 +1,22 @@
+<% layout("./layouts/boilerplate") %>
+<body>
+    <h3>Filled Incidents</h3>
+    <ul>
+    <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1 margin-2rem">
+        <% for(let incident of incidents){ %>
+            <div class="card col" >
+                <div class="card-img-overlay"><b>Type:<%= incident.type %></b></div>
+                <div class="card-body">
+                  <p class="card-text">
+                     <p>Priority:</p><b><%= incident.priority%><br></b>
+                     <p>People Affected:</p><%= incident.peopleAffected %><br>
+                     <p>Medical Emergency:</p><%= incident.medicalEmergency %><br>
+                     <p>Status:</p><%= incident.status %>
+                  </p>
+                </div>
+            </div>
+        <% }%>
+    </div>
+    
+    </ul>
+</body>

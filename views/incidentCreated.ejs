@@ -1,0 +1,39 @@
+<% layout("./layouts/boilerplate") %>
+
+<div class="container">
+
+    <div class="card incident-success">
+
+        <h1>Incident Reported</h1>
+
+        <p>
+            Your emergency incident has been successfully
+            registered with RAKSHAK.
+        </p>
+
+        <div class="incident-number">
+
+            <span>INCIDENT NUMBER</span>
+
+            <strong>
+                <%= incident.incidentNo %>
+            </strong>
+
+        </div>
+
+        <p>
+            Keep this number safe.
+            You will need it to track your incident.
+        </p>
+
+        <a href="/incident/login">
+
+            <button>
+                TRACK INCIDENT
+            </button>
+
+        </a>
+
+    </div>
+
+</div>

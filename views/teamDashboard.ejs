@@ -1,0 +1,178 @@
+<% layout("./layouts/boilerplate") %>
+
+<div class="container">
+
+    <h1>Team Dashboard</h1>
+
+    <h2><%= team.name %></h2>
+
+    <p>
+        Status:
+        <strong><%= team.status %></strong>
+    </p>
+
+    <p>
+        Capacity:
+        <%= team.capacity %>
+    </p>
+
+    <h3>Capabilities</h3>
+
+    <ul>
+        <% team.capabilities.forEach(capability => { %>
+            <li><%= capability %></li>
+        <% }) %>
+    </ul>
+
+    <h3>Location</h3>
+
+    <p>
+        Latitude: <%= team.latitude %>
+    </p>
+
+    <p>
+        Longitude: <%= team.longitude %>
+    </p>
+
+</div>
+
+<hr>
+
+<h2>Assigned Incidents</h2>
+
+<% if (assignments.length === 0) { %>
+
+    <p>No incidents assigned yet.</p>
+
+<% } else { %>
+
+    <% assignments.forEach(assignment => { %>
+
+        <div class="incident-card">
+
+            <h3>
+                <%= assignment.incidentId.type %>
+            </h3>
+
+            <p>
+                Priority:
+                <strong>
+                    <%= assignment.incidentId.priority %>
+                </strong>
+            </p>
+
+            <p>
+                People affected:
+                <%= assignment.incidentId.peopleAffected %>
+            </p>
+
+            <p>
+                Medical emergencies:
+                <%= assignment.incidentId.medicalEmergency %>
+            </p>
+
+            <p>
+                Trapped:
+                <%= assignment.incidentId.trapped ? "Yes" : "No" %>
+            </p>
+
+            <p>
+                Incident status:
+                <strong>
+                    <%= assignment.incidentId.status %>
+                </strong>
+            </p>
+
+            <p>
+                Assigned at:
+                <%= assignment.assignedAt %>
+            </p>
+
+            <p>
+    Required Resources:
+</p>
+
+<ul>
+    <% if (
+        assignment.incidentId.requiredResources &&
+        assignment.incidentId.requiredResources.length > 0
+    ) { %>
+
+        <% assignment.incidentId.requiredResources.forEach(resource => { %>
+
+            <li>
+                <%= resource %>
+            </li>
+
+        <% }) %>
+
+    <% } else { %>
+
+        <li>No specific resources required.</li>
+
+    <% } %>
+</ul>
+            <!-- ASSIGNED → START RESPONSE -->
+
+            <% if (assignment.incidentId.status === "ASSIGNED") { %>
+
+                <form
+                    method="post"
+                    action="/api/incidents/<%= assignment.incidentId._id %>/status?_method=PUT"
+                >
+
+                    <input
+                        type="hidden"
+                        name="status"
+                        value="IN_PROGRESS"
+                    >
+
+                    <input
+                        type="hidden"
+                        name="teamId"
+                        value="<%= team._id %>"
+                    >
+
+                    <button type="submit">
+                        START RESPONSE
+                    </button>
+
+                </form>
+
+            <% } %>
+
+
+            <!-- IN_PROGRESS → MARK RESOLVED -->
+
+            <% if (assignment.incidentId.status === "IN_PROGRESS") { %>
+
+                <form
+                    method="post"
+                    action="/api/incidents/<%= assignment.incidentId._id %>/status?_method=PUT"
+                >
+
+                    <input
+                        type="hidden"
+                        name="status"
+                        value="RESOLVED"
+                    >
+
+                    <input
+                        type="hidden"
+                        name="teamId"
+                        value="<%= team._id %>"
+                    >
+
+                    <button type="submit">
+                        MARK RESOLVED
+                    </button>
+
+                </form>
+
+            <% } %>
+
+        </div>
+
+    <% }) %>
+
+<% } %>

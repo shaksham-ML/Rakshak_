@@ -1,0 +1,38 @@
+<% layout("./layouts/boilerplate") %>
+
+<div class="container">
+
+    <h1>Rakshak Incident Status</h1>
+
+    <h2><%= incident.type %></h2>
+
+    <p>
+        <strong>Status:</strong>
+        <%= incident.status %>
+    </p>
+
+    <p>
+        <strong>Priority:</strong>
+        <%= incident.priority %>
+    </p>
+
+    <p>
+        <strong>People affected:</strong>
+        <%= incident.peopleAffected %>
+    </p>
+
+    <p>
+        <strong>Medical emergencies:</strong>
+        <%= incident.medicalEmergency %>
+    </p>
+
+    <p>
+        <strong>Location:</strong>
+        <%= incident.latitude %>,
+        <%= incident.longitude %>
+    </p>
+    <p>
+        <strong>User LogIn Pin</strong>
+        <%= incident.usercode %>
+    </p>
+</div>

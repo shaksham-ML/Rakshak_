@@ -1,0 +1,40 @@
+<% layout("./layouts/boilerplate") %>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>Track Your Incident</h1>
+
+        <p>
+            Enter your 5-digit Incident Number
+        </p>
+
+        <form
+            method="POST"
+            action="/api/incident/login"
+        >
+
+            <label>
+                Incident Number
+            </label>
+
+            <input
+                type="text"
+                name="incidentNo"
+                maxlength="5"
+                minlength="5"
+                pattern="[0-9]{5}"
+                placeholder="e.g. 58321"
+                required
+            >
+
+            <button type="submit">
+                VIEW INCIDENT
+            </button>
+
+        </form>
+
+    </div>
+
+</div>

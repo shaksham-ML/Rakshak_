@@ -1,0 +1,40 @@
+<% layout("./layouts/boilerplate") %>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>Response Team Login</h1>
+
+        <p>
+            Enter your 5-digit Team Code
+        </p>
+
+        <form
+            method="POST"
+            action="/api/team/login"
+        >
+
+            <label>
+                Team Code
+            </label>
+
+            <input
+                type="text"
+                name="teamCode"
+                maxlength="5"
+                minlength="5"
+                pattern="[0-9]{5}"
+                placeholder="e.g. 74126"
+                required
+            >
+
+            <button type="submit">
+                TEAM LOGIN
+            </button>
+
+        </form>
+
+    </div>
+
+</div>

@@ -1,0 +1,23 @@
+<% layout("./layouts/boilerplate") %>
+<body>
+    <h3>Our RAKSHAK</h3>
+    <ul>
+    <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1">
+        <% for(let team of allTeams){ %>
+            <div class="card col" >
+                <div class="card-img-overlay"><%= team.name %></div>
+                <div class="card-body">
+                  <p class="card-text">
+                     <b><%= team.capabilities%><br></b>
+                     <%= team.capacity %>
+                  </p>
+                </div>
+            </div>
+        <% }%>
+    </div>
+    
+    </ul>
+    <form method="get" action="/api/team/register">
+        <button>Register as New!</button>
+    </form>
+</body>

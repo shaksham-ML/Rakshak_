@@ -1,0 +1,110 @@
+<% layout("./layouts/boilerplate") %>
+<body>
+    <form method="post" action="/api/dashboard">
+        <label for="type" class="form-label">Type of Disaster</label>
+        <select name="userdb[type]" id="type">
+            <option value="Flood" >Flood</option>
+            <option value="Earthquake" >Earthquake</option>
+            <option value="Cyclone/Hurricane/Typhon" >Cyclone/Hurricane/Typhon</option>
+            <option value="Tsunami" >Tsunami</option>
+            <option value="Volcanic Eruption" >Volcanic Eruption</option>
+            <option value="Landslide" >Landslide</option>
+            <option value="Drought" >Drought</option>
+            <option value="Avalanche">Avalanche</option>
+            <option value="Heat Wave">Heat Wave</option>
+            <option value="Cold Wave">Cold Wave</option>
+            <option value="Wildfire">Wildfire</option>
+            <option value="Thunderstorm/Lighting">Thunderstorm/Lighting</option>
+            <option value="Hailstorm">Hailstorm</option>
+        </select>
+        <br>
+        <label for="peopleAffected" class="form-label">Numbers of People Affected</label>
+        <input placeholder="Enter number" name="userdb[peopleAffected]" type="number">
+        <br>
+        <label for="medicalEmergency" class="form-label">Numbers of People who required medical emergency?</label>
+        <input placeholder="Enter number" name="userdb[medicalEmergency]" type="number">
+        <br>
+        <label for="trapped" class="form-label">Are you trapped?</label>
+        <select name="userdb[trapped]" id="type">
+            <option value="true" >Yes</option>
+            <option value="false">No</option>
+        </select>
+        <br>
+        <label>Incident Location</label>
+
+        <div id="map" style="height: 400px; width: 100%;"></div>
+
+        <input
+             id="latitude"
+             name="userdb[latitude]"
+             type="number"
+             step="any"
+             placeholder="Latitude"
+             readonly
+            >
+
+        <input
+             id="longitude"
+             name="userdb[longitude]"
+             type="number"
+             step="any"
+             placeholder="Longitude"
+             readonly
+             >
+        <h3>Required Resources</h3>
+
+        <label>
+    <input
+        type="checkbox"
+        name="userdb[requiredResources]"
+        value="Ambulance"
+    >
+    Ambulance
+        </label>
+
+        <br>
+
+        <label>
+            <input
+             type="checkbox"
+             name="userdb[requiredResources]"
+             value="Medical Kit"
+            >
+        Medical Kit
+        </label>
+
+        <br>
+
+        <label>
+            <input
+                 type="checkbox"
+                 name="userdb[requiredResources]"
+                 value="Rescue Boat"
+                    >
+                Rescue Boat
+        </label>
+
+        <br>
+
+        <label>
+            <input
+                type="checkbox"
+                name="userdb[requiredResources]"
+                 value="Food"
+            >
+         Food
+        </label>
+
+        <br>
+
+        <label>
+        <input
+         type="checkbox"
+         name="userdb[requiredResources]"
+         value="Water"
+            >
+        Water
+        </label>
+        <button>Submit</button>
+    </form>
+</body>
