@@ -38,10 +38,6 @@ app.engine('ejs',ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
 app.use(express.json());
 
-app.get("/",async (req,res)=>{
-   const allTeams = await Team.find({});
-    res.render("index.ejs",{allTeams});
-});
 
 
 app.use(async (req, res, next) => {
@@ -53,6 +49,12 @@ app.use(async (req, res, next) => {
         res.status(500).send("Database connection error");
     }   
 });
+
+app.get("/",async (req,res)=>{
+   const allTeams = await Team.find({});
+    res.render("index.ejs",{allTeams});
+});
+
 //priority engine 
 function calculatePriority(data){
     let score = 0;
