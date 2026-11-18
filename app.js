@@ -39,7 +39,8 @@ app.use(express.static(path.join(__dirname,"/public")));
 app.use(express.json());
 
 app.get("/",async (req,res)=>{
-   res.render("root");
+   const allTeams = await Team.find({});
+    res.render("index.ejs",{allTeams});
 });
 
 
