@@ -38,8 +38,9 @@ app.engine('ejs',ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
 app.use(express.json());
 
-app.get("/",(req,res)=>{
-    res.send("root is running");
+app.get("/RAKSHAK",async (req,res)=>{
+    const allTeams = await Team.find({});
+    res.render("index.ejs",{allTeams});
 });
 
 
